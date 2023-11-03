@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { USER, USERS } from "../../API/Api";
-import { Axios } from "../../API/Axios";
-import TableShow from "../../Components/Dashboard/TableShow";
+import TableShow from "../../../Components/Dashboard/TableShow";
+import { USER, USERS } from "../../../services/API/Permisions";
+import { Axios } from "../../../services/API/Axios";
 
 const Users = () => {
   const [users, setUsers] = useState([]);

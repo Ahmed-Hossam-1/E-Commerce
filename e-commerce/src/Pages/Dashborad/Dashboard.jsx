@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import SideBar from "../../Components/Dashboard/SideBar";
-import TopBar from "../../Components/Dashboard/TopBar";
-import "./dashboard.css";
+import SideBar from "../../Components/Dashboard/Navigation/SideBar";
+import TopBar from "../../Components/Dashboard/Navigation/TopBar";
+import "../../CSS/pages/dashboard.css";
 
 const Dashboard = () => {
   return (

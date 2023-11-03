@@ -1,10 +1,10 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Cookie from "cookie-universal";
 import { useEffect, useState } from "react";
-import { USER } from "../../API/Api";
-import { Axios } from "../../API/Axios";
 import Forbidden from "./403";
 import FullLaoding from "../../Components/Loading/FullLaoding";
+import { USER } from "../../services/API/Permisions";
+import { Axios } from "../../services/API/Axios";
 
 const RequireAuth = ({ allowedRole }) => {
   const navigate = useNavigate();

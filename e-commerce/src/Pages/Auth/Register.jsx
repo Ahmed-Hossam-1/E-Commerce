@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { REGISTER, baseURL } from "../../API/Api";
 import Loading from "../../Components/Loading/Loading";
 import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { REGISTER, baseURL } from "../../services/API/Permisions";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -36,9 +36,9 @@ const Register = () => {
     setLoading(true);
     try {
       const res = await axios.post(`${baseURL}/${REGISTER}`, form);
-      setLoading(false);
       const token = res.data.token;
       cookie.set("Bearer", token);
+      setLoading(false);
       navigate("/dashboard/users", { replace: true });
     } catch (err) {
       setLoading(false);

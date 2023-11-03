@@ -1,7 +1,7 @@
 import HomePage from "./Pages/Website/HomePage";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
-import Users from "./Pages/Dashborad/Users";
+import Users from "./Pages/Dashborad/Users/Users";
 import GoogleCallback from "./Pages/Auth/GoogleCallback";
 import Dashboard from "./Pages/Dashborad/Dashboard";
 import RequireAuth from "./Pages/Auth/RequireAuth";
@@ -12,16 +12,16 @@ import {
   createRoutesFromElements,
   Outlet,
 } from "react-router-dom";
-import UserDetials from "./Pages/Dashborad/UserDetials";
-import AddUser from "./Pages/Dashborad/AddUser";
-import Writer from "./Pages/Dashborad/Writer";
+import UserDetials from "./Pages/Dashborad/Users/UserDetials";
+import AddUser from "./Pages/Dashborad/Users/AddUser";
+import Writer from "./Pages/Dashborad/Writer/Writer";
 import NotFound from "./Pages/Auth/404";
 import RequierBack from "./Pages/Auth/RequierBack";
-import Categories from "./Pages/Dashborad/Categories";
-import AddCategories from "./Pages/Dashborad/AddCategories";
-import EditeCategory from "./Pages/Dashborad/EditeCategory";
-import Products from "./Pages/Dashborad/Products";
-import AddProduct from "./Pages/Dashborad/AddProduct";
+import Categories from "./Pages/Dashborad/Categories/Categories";
+import AddCategories from "./Pages/Dashborad/Categories/AddCategories";
+import EditeCategory from "./Pages/Dashborad/Categories/EditeCategory";
+import Products from "./Pages/Dashborad/Products/Products";
+import AddProduct from "./Pages/Dashborad/Products/AddProduct";
 
 const App = () => {
   const router = createBrowserRouter(

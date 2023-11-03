@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Loading from "../../Components/Loading/Loading";
-import FullLaoding from "../../Components/Loading/FullLaoding";
+import Loading from "../../../Components/Loading/Loading";
+import FullLaoding from "../../../Components/Loading/FullLaoding";
 import { useNavigate, useParams } from "react-router-dom";
-import { Axios } from "../../API/Axios";
-import { USER } from "../../API/Api";
+import { USER } from "../../../services/API/Permisions";
+import { Axios } from "../../../services/API/Axios";
 
 function UserDetials() {
   const [form, setForm] = useState({

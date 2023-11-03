@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { LOGIN, baseURL } from "../../API/Api";
 import Loading from "../../Components/Loading/Loading";
 import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { LOGIN, baseURL } from "../../services/API/Permisions";
 
 const Login = () => {
   const [form, setForm] = useState({

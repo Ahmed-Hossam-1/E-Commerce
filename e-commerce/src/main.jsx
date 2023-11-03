@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import "./CSS/component/form.css";
-import "./CSS/component/button.css";
-import "./CSS/component/alerts.css";
-import "./CSS/component/google.css";
+import "./CSS/components/form.css";
+import "./CSS/components/button.css";
+import "./CSS/components/alerts.css";
+import "./CSS/components/google.css";
 
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Loading from "../../Components/Loading/Loading";
-import { Axios } from "../../API/Axios";
-import { CATEGORIES, PRODUCT } from "../../API/Api";
+import Loading from "../../../Components/Loading/Loading";
+import { Axios } from "../../../services/API/Axios";
 import { useNavigate } from "react-router-dom";
+import { CATEGORIES, PRODUCT } from "../../../services/API/Permisions";
 
 function AddProduct() {
   const [images, setImages] = useState([]);

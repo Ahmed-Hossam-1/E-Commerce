@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Bars.css";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Menu } from "../../Context/MenuContext";
+import { Menu } from "../../../Context/MenuContext";
 import { useContext, useEffect, useState } from "react";
-import { Axios } from "../../API/Axios";
-import { LOGOUT, USER } from "../../API/Api";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookie from "cookie-universal";
+import { LOGOUT, USER } from "../../../services/API/Permisions";
+import { Axios } from "../../../services/API/Axios";
+import "../../../CSS/components/Bars.css";
 
 const TopBar = () => {
   const { isOpen, setIsOpen } = useContext(Menu);

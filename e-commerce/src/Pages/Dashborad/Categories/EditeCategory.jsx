@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Loading from "../../Components/Loading/Loading";
-import { Axios } from "../../API/Axios";
-import { CAT_ADD } from "../../API/Api";
+import Loading from "../../../Components/Loading/Loading";
+import { useParams } from "react-router-dom";
+import { Axios } from "../../../services/API/Axios";
+import { CAT_ADD } from "../../../services/API/Permisions";
 
-function AddCategories() {
+function EditeCategory() {
+  const { categoriyID } = useParams();
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   //Loading
   const [loading, setLoading] = useState(false);
+
+  // Get Category
+  useEffect(() => {
+    Axios.get(`/${CAT_ADD}/${categoriyID}`)
+      .then((res) => setTitle(res.data.title))
+      .catch((err) => console.log(err));
+  }, []);
 
   async function handelSubmit(e) {
     e.preventDefault();
@@ -18,7 +28,7 @@ function AddCategories() {
     form.append("title", title);
     form.append("image", image);
     try {
-      const res = await Axios.post(`${CAT_ADD}/add`, form);
+      const res = await Axios.post(`${CAT_ADD}/edit/${categoriyID}`, form);
       setLoading(false);
       window.location.pathname = "/dashboard/categories";
     } catch (err) {
@@ -58,4 +68,4 @@ function AddCategories() {
   );
 }
 
-export default AddCategories;
+export default EditeCategory;

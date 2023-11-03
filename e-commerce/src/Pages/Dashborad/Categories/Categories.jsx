@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { CATEGORIES, CAT_ADD } from "../../API/Api";
-import { Axios } from "../../API/Axios";
-import TableShow from "../../Components/Dashboard/TableShow";
+import TableShow from "../../../Components/Dashboard/TableShow";
+import { CATEGORIES, CAT_ADD } from "../../../services/API/Permisions";
+import { Axios } from "../../../services/API/Axios";
 
 const Categories = () => {
   const [cat, setCat] = useState([]);

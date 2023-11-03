@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { CAT_ADD, PRODUCT, PRODUCTS } from "../../API/Api";
-import { Axios } from "../../API/Axios";
-import TableShow from "../../Components/Dashboard/TableShow";
+import TableShow from "../../../Components/Dashboard/TableShow";
+import { PRODUCT, PRODUCTS } from "../../../services/API/Permisions";
+import { Axios } from "../../../services/API/Axios";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

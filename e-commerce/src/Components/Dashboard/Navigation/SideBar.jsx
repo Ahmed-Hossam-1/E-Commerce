@@ -1,16 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Bars.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { Menu } from "../../Context/MenuContext";
-import { WindowSize } from "../../Context/WindowContext";
-import { USER } from "../../API/Api";
-import { Axios } from "../../API/Axios";
+import { Menu } from "../../../Context/MenuContext";
+import { WindowSize } from "../../../Context/WindowContext";
 import { links } from "./NavLink";
+import "../../../CSS/components/Bars.css";
+import { Axios } from "../../../services/API/Axios";
+import { USER } from "../../../services/API/Permisions";
 
 const SideBar = () => {
   const { isOpen } = useContext(Menu);
   const { windowSize } = useContext(WindowSize);
+
   const navigate = useNavigate();
   // User
   const [user, setUser] = useState();
