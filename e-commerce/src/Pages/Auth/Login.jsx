@@ -5,29 +5,30 @@ import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { LOGIN, baseURL } from "../../services/API/Permisions";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../Featrures/authFeature/authActions";
 
 const Login = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+  const { isLoading, isError, message } = useSelector((state) => state.auth);
+  const dispath = useDispatch();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  //cookies
+  // const cookie = Cookie();
+  //Loading
+  // const [loading, setLoading] = useState(false);
+  // Error
+  // const [err, setErr] = useState("");
 
   // Handel Foucs Input
   let foucs = useRef(null);
   useEffect(() => {
     foucs.current.focus();
   }, []);
-
-  //cookies
-  const cookie = Cookie();
-
-  //Loading
-  const [loading, setLoading] = useState(false);
-
-  // Error
-  const [err, setErr] = useState("");
 
   // Handel Form Change
   const handelChange = (e) => {
@@ -36,29 +37,30 @@ const Login = () => {
 
   async function handelSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await axios.post(`${baseURL}/${LOGIN}`, form);
-      setLoading(false);
-      const token = res.data.token;
-      cookie.set("Bearer", token);
-      const role = res.data.user.role;
-      const go = role === "1995" ? "users" : "writer";
-      // const go =
-      // role === "1995"
-      //   ? "/dashboardusers"
-      //   : role === "1996"
-      //   ? "/dashboardwriter"
-      //   : "/";
-      window.location.pathname = `/dashboard/${go}`;
-    } catch (err) {
-      setLoading(false);
-      if (err.response.status === 401) {
-        setErr("Wrong Email or Password");
-      } else {
-        setErr("Internal Server Error");
-      }
-    }
+    dispath(userLogin(form));
+    // setLoading(true);
+    // try {
+    //   const res = await axios.post(`${baseURL}/${LOGIN}`, form);
+    //   setLoading(false);
+    //   const token = res.data.token;
+    //   cookie.set("Bearer", token);
+    //   const role = res.data.user.role;
+    //   const go = role === "1995" ? "users" : "writer";
+    //   // const go =
+    //   // role === "1995"
+    //   //   ? "/dashboardusers"
+    //   //   : role === "1996"
+    //   //   ? "/dashboardwriter"
+    //   //   : "/";
+    //   window.location.pathname = `/dashboard/${go}`;
+    // } catch (err) {
+    //   setLoading(false);
+    //   if (err.response.status === 401) {
+    //     setErr("Wrong Email or Password");
+    //   } else {
+    //     setErr("Internal Server Error");
+    //   }
+    // }
   }
 
   return (
@@ -93,7 +95,7 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
             </Form.Group>
             <button className="btn0 btn-primary0">
-              {loading ? <Loading /> : "Submit"}
+              {isLoading ? <Loading /> : "Submit"}
             </button>
             <div className="google-btn">
               <a href={"http://127.0.0.1:8000/login-google"}>
@@ -109,7 +111,7 @@ const Login = () => {
                 </p>
               </a>
             </div>
-            {err && <span className="err">{err}</span>}
+            {isError && <span className="err">{message}</span>}
           </div>
         </Form>
       </div>

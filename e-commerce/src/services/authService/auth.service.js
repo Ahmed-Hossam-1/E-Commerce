@@ -7,7 +7,7 @@ const cookie = Cookie();
 const register = async (userData) => {
   const res = await axios.post(`${baseURL}/${REGISTER}`, userData);
   if (res.data) {
-    cookie.set("Bearer", res.data.refreshToken);
+    cookie.set("Bearer", res.data.token);
   }
   return res.data;
 };
@@ -15,7 +15,7 @@ const register = async (userData) => {
 const login = async (userData) => {
   const res = await axios.post(`${baseURL}/${LOGIN}`, userData);
   if (res.data) {
-    cookie.set("Bearer", res.data.refreshToken);
+    cookie.set("Bearer", res.data.token);
   }
   return res.data;
 };

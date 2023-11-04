@@ -1,10 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-import Cookie from "cookie-universal";
+// import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { REGISTER, baseURL } from "../../services/API/Permisions";
+// import { REGISTER, baseURL } from "../../services/API/Permisions";
+import { useDispatch, useSelector } from "react-redux";
+import { userSignup } from "../../Featrures/authFeature/authActions";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -12,13 +14,16 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const { isLoading, isError, message } = useSelector((state) => state.auth);
+  const dispath = useDispatch();
   const navigate = useNavigate();
   //cookies
-  const cookie = Cookie();
+  // const cookie = Cookie();
   //Loading
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // Error
-  const [err, setErr] = useState("");
+  // const [err, setErr] = useState("");
 
   // Handel Form Change
   const handelChange = (e) => {
@@ -33,21 +38,23 @@ const Register = () => {
 
   async function handelSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await axios.post(`${baseURL}/${REGISTER}`, form);
-      const token = res.data.token;
-      cookie.set("Bearer", token);
-      setLoading(false);
-      navigate("/dashboard/users", { replace: true });
-    } catch (err) {
-      setLoading(false);
-      if (err.response.status === 422) {
-        setErr("Email is already been Taken");
-      } else {
-        setErr("Internal Server Error");
-      }
-    }
+    dispath(userSignup(form));
+    navigate("/dashboard/users", { replace: true });
+    // setLoading(true);
+    // try {
+    //   const res = await axios.post(`${baseURL}/${REGISTER}`, form);
+    //   const token = res.data.token;
+    //   cookie.set("Bearer", token);
+    //   setLoading(false);
+    //   navigate("/dashboard/users", { replace: true });
+    // } catch (err) {
+    //   setLoading(false);
+    //   if (err.response.status === 422) {
+    //     setErr("Email is already been Taken");
+    //   } else {
+    //     setErr("Internal Server Error");
+    //   }
+    // }
   }
 
   return (
@@ -95,7 +102,7 @@ const Register = () => {
                 <Form.Label>Password</Form.Label>
               </Form.Group>
               <button className="btn0 btn-primary0">
-                {loading ? <Loading /> : "Register"}
+                {isLoading ? <Loading /> : "Register"}
               </button>
               <div className="google-btn">
                 <a href={"http://127.0.0.1:8000/login-google"}>
@@ -111,7 +118,7 @@ const Register = () => {
                   </p>
                 </a>
               </div>
-              {err && <span className="err">{err}</span>}
+              {isError && <span className="err">{message}</span>}
             </div>
           </Form>
         </div>
