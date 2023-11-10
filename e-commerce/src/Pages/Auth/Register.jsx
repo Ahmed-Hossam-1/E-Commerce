@@ -1,10 +1,7 @@
-// import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-// import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-// import { REGISTER, baseURL } from "../../services/API/Permisions";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignup } from "../../Featrures/authFeature/authActions";
 
@@ -18,12 +15,6 @@ const Register = () => {
   const { isLoading, isError, message } = useSelector((state) => state.auth);
   const dispath = useDispatch();
   const navigate = useNavigate();
-  //cookies
-  // const cookie = Cookie();
-  //Loading
-  // const [loading, setLoading] = useState(false);
-  // Error
-  // const [err, setErr] = useState("");
 
   // Handel Form Change
   const handelChange = (e) => {
@@ -40,21 +31,6 @@ const Register = () => {
     e.preventDefault();
     dispath(userSignup(form));
     navigate("/dashboard/users", { replace: true });
-    // setLoading(true);
-    // try {
-    //   const res = await axios.post(`${baseURL}/${REGISTER}`, form);
-    //   const token = res.data.token;
-    //   cookie.set("Bearer", token);
-    //   setLoading(false);
-    //   navigate("/dashboard/users", { replace: true });
-    // } catch (err) {
-    //   setLoading(false);
-    //   if (err.response.status === 422) {
-    //     setErr("Email is already been Taken");
-    //   } else {
-    //     setErr("Internal Server Error");
-    //   }
-    // }
   }
 
   return (

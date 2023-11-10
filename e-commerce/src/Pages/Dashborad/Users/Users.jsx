@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import TableShow from "../../../Components/Dashboard/TableShow";
 import { USER, USERS } from "../../../services/API/Permisions";
 import { Axios } from "../../../services/API/Axios";
+import { useDispatch, useSelector } from "react-redux";
+import { _getUser } from "../../../Featrures/UsersFeatrure/userActions";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
+
+  // const userrr = useSelector((state) => state.user);
+  // console.log(userrr);
+
+  const dispatch = useDispatch();
+  console.log(dispatch(_getUser()));
 
   // Get Current User
   useEffect(() => {

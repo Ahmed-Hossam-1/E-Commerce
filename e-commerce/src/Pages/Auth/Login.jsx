@@ -1,10 +1,6 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-import Cookie from "cookie-universal";
 import { Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { LOGIN, baseURL } from "../../services/API/Permisions";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../Featrures/authFeature/authActions";
 
@@ -13,16 +9,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const { isLoading, isError, message } = useSelector((state) => state.auth);
   const dispath = useDispatch();
-
-  // const navigate = useNavigate();
-  //cookies
-  // const cookie = Cookie();
-  //Loading
-  // const [loading, setLoading] = useState(false);
-  // Error
-  // const [err, setErr] = useState("");
 
   // Handel Foucs Input
   let foucs = useRef(null);
@@ -38,29 +27,8 @@ const Login = () => {
   async function handelSubmit(e) {
     e.preventDefault();
     dispath(userLogin(form));
-    // setLoading(true);
-    // try {
-    //   const res = await axios.post(`${baseURL}/${LOGIN}`, form);
-    //   setLoading(false);
-    //   const token = res.data.token;
-    //   cookie.set("Bearer", token);
-    //   const role = res.data.user.role;
-    //   const go = role === "1995" ? "users" : "writer";
-    //   // const go =
-    //   // role === "1995"
-    //   //   ? "/dashboardusers"
-    //   //   : role === "1996"
-    //   //   ? "/dashboardwriter"
-    //   //   : "/";
-    //   window.location.pathname = `/dashboard/${go}`;
-    // } catch (err) {
-    //   setLoading(false);
-    //   if (err.response.status === 401) {
-    //     setErr("Wrong Email or Password");
-    //   } else {
-    //     setErr("Internal Server Error");
-    //   }
-    // }
+    const go = role === "1995" ? "users" : "writer";
+    window.location.pathname = `/dashboard/${go}`;
   }
 
   return (
