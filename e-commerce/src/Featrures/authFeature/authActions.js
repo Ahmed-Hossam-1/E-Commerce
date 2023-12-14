@@ -4,7 +4,7 @@ import {
   logout,
   register,
 } from "../../services/authService/auth.service.js";
-import { LOGIN, LOGOUT, REGISTER } from "../../services/API/Permisions.js";
+import { LOGIN, LOGOUT, REGISTER } from "../../utils/API/Permisions.js";
 
 const userSignup = createAsyncThunk(
   `/${REGISTER}`,

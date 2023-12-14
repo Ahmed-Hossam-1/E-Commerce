@@ -1,15 +1,15 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import Cookie from "cookie-universal";
 import { useEffect, useState } from "react";
-import Forbidden from "./403";
-import FullLaoding from "../../Components/Loading/FullLaoding";
-import { USER } from "../../services/API/Permisions";
-import { Axios } from "../../services/API/Axios";
+import Forbidden from "../Errors/403";
+import { USER } from "../../utils/API/Permisions";
+import { Axios } from "../../utils/API/Axios";
+import { useSelector } from "react-redux";
 
 const RequireAuth = ({ allowedRole }) => {
-  const navigate = useNavigate();
-  // User
   const [user, setUser] = useState();
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth);
+
   // fetch user
   useEffect(() => {
     Axios.get(`${USER}`)
@@ -19,17 +19,11 @@ const RequireAuth = ({ allowedRole }) => {
       });
   }, []);
 
-  // cookies
-  const cookie = Cookie();
-  const token = cookie.get("Bearer");
-
-  return token ? (
-    user === undefined || "" ? (
-      <FullLaoding />
-    ) : allowedRole.includes(user.role) ? (
+  return token?.user ? (
+    allowedRole.includes(user?.role) ? (
       <Outlet />
     ) : (
-      <Forbidden role={user.role} />
+      <Forbidden role={user?.role} />
     )
   ) : (
     <Navigate to="/login" replace={true} />

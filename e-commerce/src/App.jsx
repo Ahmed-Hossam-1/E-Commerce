@@ -14,8 +14,7 @@ import {
 } from "react-router-dom";
 import UserDetials from "./Pages/Dashborad/Users/UserDetials";
 import AddUser from "./Pages/Dashborad/Users/AddUser";
-import Writer from "./Pages/Dashborad/Writer/Writer";
-import NotFound from "./Pages/Auth/404";
+import NotFound from "./Pages/Errors/404";
 import RequierBack from "./Pages/Auth/RequierBack";
 import Categories from "./Pages/Dashborad/Categories/Categories";
 import AddCategories from "./Pages/Dashborad/Categories/AddCategories";
@@ -48,10 +47,7 @@ const App = () => {
               </Route>
               <Route path="user/add" element={<AddUser />} />
             </Route>
-            {/* Writer */}
-            <Route element={<RequireAuth allowedRole={["1996", "1995"]} />}>
-              <Route path="writer" element={<Writer />} />
-            </Route>
+
             {/* PM */}
             <Route element={<RequireAuth allowedRole={["1999", "1995"]} />}>
               {/* Categories */}

@@ -1,5 +1,5 @@
-import { Axios } from "../API/Axios";
-import { USER, USERS } from "../API/Permisions";
+import { Axios } from "../../utils/API/Axios";
+import { USER, USERS } from "../../utils/API/Permisions";
 
 const addUser = async (userData) => {
   const res = await Axios.post(`${USER}/add`, userData);
@@ -11,8 +11,8 @@ const editUser = async (userData, usersID) => {
   return res.data;
 };
 
-const getUser = async (usersID) => {
-  const res = await Axios.get(`${USER}/${usersID}`);
+const getUser = async () => {
+  const res = await Axios.get(`${USER}`);
   return res.data;
 };
 

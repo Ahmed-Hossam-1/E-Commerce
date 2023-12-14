@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Loading from "../../Components/Loading/Loading";
+import Loading from "../../Components/Shared/Loading/Loading";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,8 +29,8 @@ const Register = () => {
 
   async function handelSubmit(e) {
     e.preventDefault();
-    dispath(userSignup(form));
-    navigate("/dashboard/users", { replace: true });
+    const res = await dispath(userSignup(form));
+    res.type && navigate("/dashboard", { replace: true });
   }
 
   return (

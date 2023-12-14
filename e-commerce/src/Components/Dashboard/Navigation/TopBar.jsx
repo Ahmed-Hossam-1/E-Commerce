@@ -4,8 +4,8 @@ import { Menu } from "../../../Context/MenuContext";
 import { useContext, useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookie from "cookie-universal";
-import { LOGOUT, USER } from "../../../services/API/Permisions";
-import { Axios } from "../../../services/API/Axios";
+import { LOGOUT, USER } from "../../../utils/API/Permisions";
+import { Axios } from "../../../utils/API/Axios";
 import "../../../CSS/components/Bars.css";
 
 const TopBar = () => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import TableShow from "../../../Components/Dashboard/TableShow";
-import { PRODUCT, PRODUCTS } from "../../../services/API/Permisions";
-import { Axios } from "../../../services/API/Axios";
+import TableShow from "../../../Components/Shared/Tables/TableShow";
+import { PRODUCT, PRODUCTS } from "../../../utils/API/Permisions";
+import { Axios } from "../../../utils/API/Axios";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

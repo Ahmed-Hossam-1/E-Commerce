@@ -6,7 +6,7 @@ const user = Cookie();
 const token = user.get("Bearer");
 const initialState = {
   isLoading: false,
-  user: token ? token : null, // {accessToken,email}
+  user: token ? token : null,
   isError: null,
   isSuccess: false,
   message: "",

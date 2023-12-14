@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Loading from "../../../Components/Loading/Loading";
-import { CAT_ADD } from "../../../services/API/Permisions";
-import { Axios } from "../../../services/API/Axios";
+import Loading from "../../../Components/Shared/Loading/Loading";
+import { CAT_ADD } from "../../../utils/API/Permisions";
+import { Axios } from "../../../utils/API/Axios";
 
 function AddCategories() {
   const [title, setTitle] = useState("");

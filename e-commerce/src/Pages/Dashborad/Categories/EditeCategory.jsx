@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Loading from "../../../Components/Loading/Loading";
+import Loading from "../../../Components/Shared/Loading/Loading";
 import { useParams } from "react-router-dom";
-import { Axios } from "../../../services/API/Axios";
-import { CAT_ADD } from "../../../services/API/Permisions";
+import { Axios } from "../../../utils/API/Axios";
+import { CAT_ADD } from "../../../utils/API/Permisions";
 
 function EditeCategory() {
   const { categoriyID } = useParams();

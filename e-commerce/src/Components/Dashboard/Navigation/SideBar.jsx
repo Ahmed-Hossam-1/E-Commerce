@@ -5,8 +5,8 @@ import { Menu } from "../../../Context/MenuContext";
 import { WindowSize } from "../../../Context/WindowContext";
 import { links } from "./NavLink";
 import "../../../CSS/components/Bars.css";
-import { Axios } from "../../../services/API/Axios";
-import { USER } from "../../../services/API/Permisions";
+import { Axios } from "../../../utils/API/Axios";
+import { USER } from "../../../utils/API/Permisions";
 
 const SideBar = () => {
   const { isOpen } = useContext(Menu);

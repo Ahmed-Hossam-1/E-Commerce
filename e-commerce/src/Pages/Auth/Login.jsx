@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import Loading from "../../Components/Loading/Loading";
+import Loading from "../../Components/Shared/Loading/Loading";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../Featrures/authFeature/authActions";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -12,6 +13,7 @@ const Login = () => {
 
   const { isLoading, isError, message } = useSelector((state) => state.auth);
   const dispath = useDispatch();
+  const navigate = useNavigate();
 
   // Handel Foucs Input
   let foucs = useRef(null);
@@ -26,9 +28,8 @@ const Login = () => {
 
   async function handelSubmit(e) {
     e.preventDefault();
-    dispath(userLogin(form));
-    const go = role === "1995" ? "users" : "writer";
-    window.location.pathname = `/dashboard/${go}`;
+    const res = await dispath(userLogin(form));
+    res.type && navigate(`/dashboard`);
   }
 
   return (

@@ -1,5 +1,5 @@
 import Cookie from "cookie-universal";
-import { LOGIN, REGISTER, baseURL } from "../API/Permisions";
+import { LOGIN, REGISTER, baseURL } from "../../utils/API/Permisions";
 import axios from "axios";
 
 const cookie = Cookie();

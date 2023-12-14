@@ -45,10 +45,4 @@ export const links = [
     icon: faPlus,
     role: ["1995", "1999"],
   },
-  {
-    name: "Writer",
-    path: "writer",
-    icon: faPen,
-    role: ["1995", "1996"],
-  },
 ];
