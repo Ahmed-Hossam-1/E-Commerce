@@ -5,6 +5,8 @@ import Loading from "../../../Components/Shared/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import { USER } from "../../../utils/API/Permisions";
 import { Axios } from "../../../utils/API/Axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../../Featrures/userFeatures/userActions";
 
 function UserDetials() {
   const [form, setForm] = useState({
@@ -14,9 +16,12 @@ function UserDetials() {
     role: "",
   });
   // Error
-  const [err, setErr] = useState("");
+  // const [err, setErr] = useState("");
   //Loading
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  const { isLoading, isError } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -27,19 +32,21 @@ function UserDetials() {
 
   async function handelSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await Axios.post(`${USER}/add`, form);
-      setLoading(false);
-      navigate("/dashboard/users", { replace: true });
-    } catch (err) {
-      setLoading(false);
-      if (err.response.status === 422) {
-        setErr("Email is already been Taken");
-      } else {
-        setErr("Internal Server Error");
-      }
-    }
+    // setLoading(true);
+    // try {
+    //   const res = await Axios.post(`${USER}/add`, form);
+    //   // setLoading(false);
+    //   navigate("/dashboard/users", { replace: true });
+    // } catch (err) {
+    //   // setLoading(false);
+    //   if (isError.response.status === 422) {
+    //     setErr("Email is already been Taken");
+    //   } else {
+    //     setErr("Internal Server Error");
+    //   }
+    // }
+    const res = await dispatch(addUser(form));
+    res.type && navigate("/dashboard/users", { replace: true });
   }
   return (
     <Form className="bg-white w-100 p-3" onSubmit={handelSubmit}>
@@ -105,10 +112,10 @@ function UserDetials() {
         variant="primary"
         type="submit"
       >
-        {loading ? <Loading /> : "Add User"}
+        {isLoading ? <Loading /> : "Add User"}
       </Button>
 
-      {err && <span className="err">{err}</span>}
+      {isError && <span className="err">{isError.message}</span>}
     </Form>
   );
 }

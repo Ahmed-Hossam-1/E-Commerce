@@ -1,26 +1,21 @@
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
 import Forbidden from "../Errors/403";
-import { USER } from "../../utils/API/Permisions";
-import { Axios } from "../../utils/API/Axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../../Featrures/userFeatures/userActions";
 
 const RequireAuth = ({ allowedRole }) => {
-  const [user, setUser] = useState();
-  const navigate = useNavigate();
-  const token = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   // fetch user
   useEffect(() => {
-    Axios.get(`${USER}`)
-      .then((res) => setUser(res.data))
-      .catch(() => {
-        navigate("/login", { replace: true });
-      });
-  }, []);
+    dispatch(fetchUser());
+  }, [dispatch]);
 
-  return token?.user ? (
-    allowedRole.includes(user?.role) ? (
+  return auth?.user ? (
+    allowedRole.includes(user?.user?.role) ? (
       <Outlet />
     ) : (
       <Forbidden role={user?.role} />
