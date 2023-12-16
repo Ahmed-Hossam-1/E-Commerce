@@ -1,0 +1,18 @@
+.err {
+  display: block;
+  width: 80%;
+  margin-top: 15px;
+  color: red;
+  background-color: #f8d7ad;
+  padding: 15px 20px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+@media (max-width: 992px) {
+  .err {
+    width: 100%;
+  }
+}
