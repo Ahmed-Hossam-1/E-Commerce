@@ -35,9 +35,7 @@ const Products = () => {
       <div className="d-flex align-items-center justify-content-between">
         <h1 className="mb-4 mt-2">Products Page</h1>
       </div>
-      {products.length > 0 && (
-        <TableShow header={headers} data={products} delete={handelDelete} />
-      )}
+      <TableShow header={headers} data={products} delete={handelDelete} />
     </div>
   );
 };

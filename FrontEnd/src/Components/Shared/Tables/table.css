@@ -1,0 +1,13 @@
+table {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+thead {
+  color: wheat;
+  background-color: rgb(158, 103, 209) !important;
+}
+td,
+th {
+  border: none !important;
+  text-align: center;
+}

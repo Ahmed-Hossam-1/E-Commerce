@@ -33,9 +33,7 @@ const Categories = () => {
       <div className="d-flex align-items-center justify-content-between">
         <h1 className="mb-4 mt-2">Categories Page</h1>
       </div>
-      {cat.length > 0 && (
-        <TableShow header={headers} data={cat} delete={handelDelete} />
-      )}
+      <TableShow header={headers} data={cat} delete={handelDelete} />
     </div>
   );
 };

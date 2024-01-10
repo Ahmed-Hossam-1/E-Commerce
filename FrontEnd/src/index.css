@@ -1,9 +1,6 @@
 /* Global Roles */
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700;900&display=swap");
-/* Tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -12,15 +9,6 @@
 body {
   font-family: "Inconsolata", monospace;
 }
-.row {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.row .col-12 {
-  width: 100%;
-}
-.row .col-6 {
-  width: 50%;
+.low-shadow {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }

@@ -2,6 +2,7 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./table.css";
 
 const TableShow = (props) => {
   // Defalut Value currentUser
@@ -55,7 +56,7 @@ const TableShow = (props) => {
   ));
 
   return (
-    <Table striped bordered hover>
+    <Table className="low-shadow" striped bordered hover>
       <thead>
         <tr>
           <th>id</th>

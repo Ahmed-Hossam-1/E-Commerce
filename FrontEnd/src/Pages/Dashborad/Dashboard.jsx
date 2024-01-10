@@ -12,7 +12,9 @@ const Dashboard = () => {
         style={{ marginTop: "70px", height: "100vh" }}
       >
         <SideBar />
-        <Outlet />
+        <div className="child">
+          <Outlet />
+        </div>
       </main>
     </div>
   );

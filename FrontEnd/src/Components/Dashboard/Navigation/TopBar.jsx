@@ -41,7 +41,7 @@ const TopBar = () => {
     <div className="top-bar">
       <div className="disp  w-100">
         <div className="d-flex align-items-center gap-5">
-          <h3>E-Commerce</h3>
+          <h3>Dashboard</h3>
           <FontAwesomeIcon
             cursor="Pointer"
             onClick={() => setIsOpen(!isOpen)}
