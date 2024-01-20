@@ -51,7 +51,7 @@ const TopBar = () => {
         <div>
           <Dropdown>
             <Dropdown.Toggle variant="primary" id="dropdown-basic">
-              {user}
+              Admin
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={handelLogout}>Log Out</Dropdown.Item>

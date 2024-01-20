@@ -3,9 +3,9 @@ table {
   border-radius: 10px;
 }
 thead {
-  color: wheat;
-  background-color: rgb(158, 103, 209) !important;
+  text-align: center;
 }
+
 td,
 th {
   border: none !important;
